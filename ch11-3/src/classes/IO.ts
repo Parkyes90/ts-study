@@ -3,7 +3,7 @@ import { IFunctor } from '../interfaces';
 
 const pipe = (...funcs) => (arg) => funcs.reduce((value, fn) => fn(value), arg);
 
-export class IO implements IRunIO, IRunIO<Function> {
+export class IO implements IRunIO, IFunctor<Function> {
   constructor(public fn: Function) {}
   static of(fn: Function) {
     return new IO(fn);
